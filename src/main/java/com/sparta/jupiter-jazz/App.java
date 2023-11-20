@@ -1,4 +1,4 @@
-package com.sparta.jupiter-jazz;
+package com.sparta.jupiter;
 
 /**
  * Hello world!
