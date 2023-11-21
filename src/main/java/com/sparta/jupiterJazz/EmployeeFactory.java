@@ -1,4 +1,4 @@
-package com.sparta.jupiter;
+package com.sparta.jupiterJazz;
 
 import java.io.*;
 import java.util.*;

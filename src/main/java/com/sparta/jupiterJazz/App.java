@@ -1,9 +1,5 @@
-package com.sparta.jupiter;
+package com.sparta.jupiterJazz;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
