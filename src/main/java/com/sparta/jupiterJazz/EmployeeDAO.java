@@ -5,27 +5,45 @@ import java.util.Date;
 
 public class EmployeeDAO implements DAO{
     @Override
-    public ArrayList<Employees> getAllEmployees() {
+    public static <Employees> getAllEmployees() {
 
     }
 
     @Override
-    public Employee searchById(int id) {
+    public static searchById(int id) {
         ArrayList<Employee> listOfEmployees = EmployeeDTO.getEmployeeCollection();
     }
 
     @Override
-    public ArrayList<Employee> searchByLastName(String name) {
-        return null;
+    public static <Employee> searchByLastName(String name) {
+        ArrayList<Employee> temp = new ArrayList<>();
+        for (Employee employee : dto.getAllEmployees()) {
+            if (employee.getLastName().contains(name)) {
+                temp.add(employee);
+            }
+        }
+        return temp;
     }
 
     @Override
-    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate) {
-        return null;
+    public static <Employee> searchByDateRange(Date firstDate, Date lastDate) {
+        ArrayList<Employee> temp = new ArrayList<>();
+        for (Employee employee : dto.getAllEmployees()) {
+            if (employee.getAge() >= minAge && employee.getAge() <= maxAge) {
+                temp.add(employee);
+            }
+        }
+        return temp;
     }
 
     @Override
-    public ArrayList<Employee> searchByAgeRange(int minAge, int maxAge) {
-        return null;
+    public static <Employee> searchByAgeRange(int minAge, int maxAge) {
+        ArrayList<Employee> temp = new ArrayList<>();
+        for (Employee employee : dto.getAllEmployees()) {
+            if (employee.getAge() >= minAge && employee.getAge() <= maxAge) {
+                temp.add(employee);
+            }
+        }
+        return temp;
     }
 }
