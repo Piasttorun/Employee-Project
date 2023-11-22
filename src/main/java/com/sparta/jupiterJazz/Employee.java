@@ -3,7 +3,7 @@ package com.sparta.jupiterJazz;
 import java.util.Date;
 
 public class Employee {
-    public Employee(int employeeID, String prefix, String firstName, char middleInitial, String lastName,
+    public Employee(String employeeID, String prefix, String firstName, char middleInitial, String lastName,
                     char gender, String email, Date dateOfBirth, Date dateOfJob, int salary) {
         this.employeeID = employeeID;
         this.prefix = prefix;
@@ -17,7 +17,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    private int employeeID;
+    private String employeeID;
     private String prefix;
 
     private String firstName;
@@ -44,11 +44,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public int getEmployeeID() {
+    public String getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 

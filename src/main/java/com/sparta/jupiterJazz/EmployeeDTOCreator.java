@@ -29,7 +29,7 @@ public class EmployeeDTOCreator {
     }
 
     public static void main(String[] args) throws IOException, ParseException {
-        getEmployeeArraylist(8);
+        getEmployeeArraylist(950);
 
     }
 }

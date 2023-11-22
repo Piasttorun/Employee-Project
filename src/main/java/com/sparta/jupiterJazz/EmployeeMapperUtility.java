@@ -25,7 +25,7 @@ public class EmployeeMapperUtility {
             System.out.print(fieldstring);
         }
 
-        return new Employee(toInt(eFields[0]), eFields[1], eFields[2],
+        return new Employee(eFields[0], eFields[1], eFields[2],
                 toChar(eFields[3]), eFields[4], toChar(eFields[5]), eFields[6],
                 toDate(eFields[7]), toDate(eFields[8]) , toInt(eFields[9]));
 
