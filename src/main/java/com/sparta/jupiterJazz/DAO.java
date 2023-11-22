@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public interface DAO {
+
+    ArrayList<Employees> getAllEmployees();
+
     Employee searchById(int id);
 
     ArrayList<Employee> searchByLastName(String name);

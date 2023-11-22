@@ -3,7 +3,12 @@ package com.sparta.jupiterJazz;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class EmployeeDAO {
+public class EmployeeDAO implements DAO{
+    @Override
+    public ArrayList<Employees> getAllEmployees() {
+
+    }
+
     @Override
     public Employee searchById(int id) {
         ArrayList<Employee> listOfEmployees = EmployeeDTO.getEmployeeCollection();
