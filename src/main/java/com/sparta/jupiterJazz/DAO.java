@@ -1,7 +1,8 @@
 package com.sparta.jupiterJazz;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public interface DAO {
 
@@ -11,7 +12,7 @@ public interface DAO {
 
     ArrayList<Employee> searchByLastName(String name, DTO dto);
 
-    ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTO dto);
+    ArrayList<Employee> searchByDateRange(SimpleDateFormat firstDate, SimpleDateFormat lastDate, DTO dto);
 
     ArrayList<Employee> searchByAgeRange(int minAge, int maxAge, DTO dto);
 
