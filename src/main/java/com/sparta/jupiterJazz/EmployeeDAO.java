@@ -1,31 +1,48 @@
 package com.sparta.jupiterJazz;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class EmployeeDAO implements DAO{
+public class EmployeeDAO implements DAO {
     @Override
-    public ArrayList<Employees> getAllEmployees() {
-
+    public static ArrayList<Employees> getAllEmployees(DTO dto) {
+        return dto.getAllEmplyees();
     }
 
     @Override
-    public Employee searchById(int id) {
-        ArrayList<Employee> listOfEmployees = EmployeeDTO.getEmployeeCollection();
+    public static Employee searchById(int id, DTO dto) {
+        for (Employee employee: dto.getAllEmployees) {
+            if (Employee.getId == id) {
+                return employee;
+            }
+        }
     }
 
     @Override
-    public ArrayList<Employee> searchByLastName(String name) {
-        return null;
+    public static ArrayList<Employee> searchByLastName(String name, DTO dto) {
+        ArrayList<Employee> temp = new ArrayList<>();
+        for (Employee employee: dto.getAllEmployees()) {
+            if (employee.getLastName().contains(name)) {
+                temp.add(employee);
+            }
+        }
+        return temp;
     }
 
     @Override
-    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate) {
-        return null;
+    public static ArrayList<Employee> searchByDateRange(SimpleDateFormat firstDate, SimpleDateFormat lastDate, DTO dto) {
+        ArrayList<Employee> temp = new ArrayList<>();
+        for (Employee employee: dto.getAllEmployees()) {
+            if (employee.getDate().after(firstDate) && employee.getDate().before(lastDate)) {
+                temp.add(employee);
+            }
+        }
+        return temp;
     }
 
     @Override
-    public ArrayList<Employee> searchByAgeRange(int minAge, int maxAge) {
+    public static ArrayList<Employee> searchByAgeRange(int minAge, int maxAge) {
         return null;
     }
 }
