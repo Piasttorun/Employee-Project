@@ -2,6 +2,7 @@ package com.sparta.jupiterJazz;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -10,6 +11,17 @@ public class EmployeeDAO implements DAO {
         return dto.getEmployees();
     }
 
+    public void setEmployees(ArrayList<Employee> employees, DTO dto) {
+        dto.setEmployees(employees);
+    }
+
+    public int getNumCorrupt(DTO dto) { return dto.getNumCorrupt(); }
+
+    public void setNumCorrupt(int numCorrupt, DTO dto) {
+        dto.setNumCorrupt(numCorrupt);
+    }
+
+    public EmployeeDAO(){}
     //May throw new employeeIdException
     public Employee searchById(String id, DTO dto) {
         Employee result = null;
