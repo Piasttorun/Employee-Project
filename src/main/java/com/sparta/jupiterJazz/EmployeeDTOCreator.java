@@ -1,5 +1,7 @@
 package com.sparta.jupiterJazz;
 
+import com.sparta.jupiterJazz.Validator.EmployeeValidation;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -15,10 +17,23 @@ public class EmployeeDTOCreator {
             throws IOException, ParseException {
         // Method call to the factory
         String[] employeeStrings = getEmployees(numEmployees);
+        ArrayList<Employee> employeeArrayList = convertStringsToArraylist(employeeStrings);
+
+        //Validates each employee before adding to the list
+        ArrayList<Employee> validateEmployees = new ArrayList<>();
+        for (Employee employee : employeeArrayList){
+            if (EmployeeValidation.validateEmployee(employee)){
+                validateEmployees.add(employee);
+            }else {
+                System.out.println("Invalid employee data: " + employee.toString());
+            }
+        }
+
+        return validateEmployees;
 
         // Call the utility class for conversion
-        ArrayList<Employee> employeeArrayList = convertStringsToArraylist(employeeStrings);
-        return employeeArrayList;
+//        ArrayList<Employee> employeeArrayList = convertStringsToArraylist(employeeStrings);
+//        return employeeArrayList;
 
         // Call the validator class to get number of corruptfiles
 
@@ -29,7 +44,7 @@ public class EmployeeDTOCreator {
     }
 
     public static void main(String[] args) throws IOException, ParseException {
-        getEmployeeArraylist(950);
+        ArrayList<Employee> validateEmployees = getEmployeeArraylist(950);
 
     }
 }
