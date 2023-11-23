@@ -38,6 +38,8 @@ public class UserInputHandler {
         }
     }
 
+    //ageRange
+    //last name
     public static void displayEmployees(int numberOfEmployees){
         //Load(numberOfEmployees)
     }
@@ -45,7 +47,7 @@ public class UserInputHandler {
         //searchID(employeeID)
     }
     public static void searchHireDate(String hireDate){
-        //searchDateRange
+        //searchDateRange()
     }
 
 }
