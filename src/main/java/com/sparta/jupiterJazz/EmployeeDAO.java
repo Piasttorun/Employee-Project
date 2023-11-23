@@ -5,13 +5,12 @@ import java.util.ArrayList;
 
 
 public class EmployeeDAO implements DAO {
-    @Override
+
     public static ArrayList<Employees> getAllEmployees(DTO dto) {
         return dto.getAllEmplyees();
     }
 
     //May throw new employeeIdException
-    @Override
     public static Employee searchById(int id, DTO dto) {
         Employee result = null;
         for (Employee employee: dto.getAllEmployees) {
@@ -22,7 +21,6 @@ public class EmployeeDAO implements DAO {
         return result;
     }
 
-    @Override
     public static ArrayList<Employee> searchByLastName(String name, DTO dto) {
         ArrayList<Employee> temp = new ArrayList<>();
         for (Employee employee : dto.getAllEmployees()) {
@@ -33,7 +31,6 @@ public class EmployeeDAO implements DAO {
         return temp;
     }
 
-    @Override
     public static ArrayList<Employee> searchByDateRange(SimpleDateFormat firstDate, SimpleDateFormat lastDate, DTO dto) {
         ArrayList<Employee> temp = new ArrayList<>();
         for (Employee employee: dto.getAllEmployees()) {
@@ -44,7 +41,6 @@ public class EmployeeDAO implements DAO {
         return temp;
     }
 
-    @Override
     public static ArrayList<Employee> searchByAgeRange(int minAge, int maxAge, DTO dto) {
         ArrayList<Employee> temp = new ArrayList<>();
         for (Employee employee : dto.getAllEmployees()) {
