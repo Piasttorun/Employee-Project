@@ -2,18 +2,18 @@ package com.sparta.jupiterJazz;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public interface DAO {
 
-    static ArrayList<Employee> getAllEmployees(DTO dto);
+    ArrayList<Employee> getEmployees(DTO dto);
 
-    static Employee searchById(int id, DTO dto);
+    Employee searchById(String id, DTO dto);
 
-    static ArrayList<Employee> searchByLastName(String name, DTO dto);
+    ArrayList<Employee> searchByLastName(String name, DTO dto);
 
-    static ArrayList<Employee> searchByDateRange(SimpleDateFormat firstDate, SimpleDateFormat lastDate, DTO dto);
-
-    static ArrayList<Employee> searchByAgeRange(int minAge, int maxAge, DTO dto);
+    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTO dto);
+    public ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTO dto);
 
 }
