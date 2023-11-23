@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public interface DAO {
+interface DAO {
 
     ArrayList<Employee> getEmployees(DTO dto);
 
@@ -16,4 +16,9 @@ public interface DAO {
     public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTO dto);
     public ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTO dto);
 
+    void setEmployees(ArrayList<Employee> employees, DTO dto);
+
+    int getNumCorrupt(DTO dto);
+
+    void setNumCorrupt(int numCorrupt, DTO dto);
 }
