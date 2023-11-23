@@ -14,6 +14,18 @@ public class EmployeeDAO implements DAO {
         return dto.getEmployees();
     }
 
+    public void setEmployees(ArrayList<Employee> employees, DTO dto) {
+        dto.setEmployees(employees);
+    }
+
+    public int getNumCorrupt(DTO dto) { return dto.getNumCorrupt(); }
+
+    public void setNumCorrupt(int numCorrupt, DTO dto) {
+        dto.setNumCorrupt(numCorrupt);
+    }
+
+    public EmployeeDAO(){}
+
     public Employee searchById(String id, DTO dto) throws EmployeeIdException {
         Employee result = null;
         for (Employee employee : dto.getEmployees()) {
@@ -21,10 +33,10 @@ public class EmployeeDAO implements DAO {
                 result = employee;
             }
         }
-        if (result.equals(null)) {
+        if (result == null) {
             throw new EmployeeIdException("Employee ID not found");
         }
-            return result;
+        return result;
     }
 
     public ArrayList<Employee> searchByLastName(String name, DTO dto) throws LastNameException {
@@ -58,7 +70,7 @@ public class EmployeeDAO implements DAO {
         ArrayList<Employee> temp = new ArrayList<>();
         for (Employee employee : dto.getEmployees()) {
             if (employee.getDateOfBirth().after(minDate) &&
-                    employee.getDateOfBirth().before(minDate)) {
+                    employee.getDateOfBirth().before(maxDate)) {
                 temp.add(employee);
             }
         }
