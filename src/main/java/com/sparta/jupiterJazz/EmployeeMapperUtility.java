@@ -40,7 +40,8 @@ public class EmployeeMapperUtility {
     }
 
     private static Date toDate(String inputString) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
         return dateFormat.parse(inputString);
     }
 

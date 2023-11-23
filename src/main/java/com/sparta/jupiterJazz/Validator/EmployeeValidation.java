@@ -15,7 +15,10 @@ public class EmployeeValidation {
                 validateEmail(employee.getEmail()) &&
                 validateDateOfBirth(employee.getDateOfBirth()) &&
                 validateDateOfJoining(employee.getDateOfJob()) &&
-                validateSalary(employee.getSalary());
+                validateSalary(employee.getSalary()) &&
+                bornBeforeJob(employee.getDateOfBirth(), employee.getDateOfJob()) &&
+                datesBeforeToday(employee.getDateOfBirth(), employee.getDateOfJob())
+                ;
     }
 
     private static boolean validateEmployeeID(String employeeID){
@@ -39,7 +42,7 @@ public class EmployeeValidation {
     }
 
     private static boolean validateEmail(String email){
-        return email != null && email.contains("@");
+        return email != null && email.contains("@") && email.contains(".");
     }
 
     private static boolean validateDateOfBirth(Date dateOfBirth){
@@ -52,5 +55,14 @@ public class EmployeeValidation {
 
     private static boolean validateSalary(int salary){
         return salary >0;
+    }
+
+    private static boolean bornBeforeJob(Date dateOfBirth, Date dateOfJoin){
+        return (dateOfBirth.before(dateOfJoin));
+    }
+
+    private static boolean datesBeforeToday(Date dateOfBirth, Date dateOfJoin) {
+        Date todaysDate = new Date();
+        return (dateOfBirth.before(todaysDate) && dateOfJoin.before(todaysDate));
     }
 }
