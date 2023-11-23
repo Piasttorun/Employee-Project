@@ -2,28 +2,28 @@ package com.sparta.jupiterJazz;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class EmployeeDAO implements DAO {
-
-    public static ArrayList<Employees> getAllEmployees(DTO dto) {
-        return dto.getAllEmplyees();
+    public ArrayList<Employee> getEmployees(DTO dto) {
+        return dto.getEmployees();
     }
 
     //May throw new employeeIdException
-    public static Employee searchById(int id, DTO dto) {
+    public Employee searchById(String id, DTO dto) {
         Employee result = null;
-        for (Employee employee: dto.getAllEmployees) {
-            if (Employee.getId == id) {
+        for (Employee employee: dto.getEmployees()) {
+            if (employee.getEmployeeID() == id) {
                 result = employee;
             }
         }
         return result;
     }
 
-    public static ArrayList<Employee> searchByLastName(String name, DTO dto) {
+    public ArrayList<Employee> searchByLastName(String name, DTO dto) {
         ArrayList<Employee> temp = new ArrayList<>();
-        for (Employee employee : dto.getAllEmployees()) {
+        for (Employee employee : dto.getEmployees()) {
             if (employee.getLastName().contains(name)) {
                 temp.add(employee);
             }
@@ -31,20 +31,22 @@ public class EmployeeDAO implements DAO {
         return temp;
     }
 
-    public static ArrayList<Employee> searchByDateRange(SimpleDateFormat firstDate, SimpleDateFormat lastDate, DTO dto) {
+    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTO dto) {
         ArrayList<Employee> temp = new ArrayList<>();
-        for (Employee employee: dto.getAllEmployees()) {
-            if (employee.getDate().after(firstDate) && employee.getDate().before(lastDate)) {
+        for (Employee employee: dto.getEmployees()) {
+            if (employee.getDateOfJob().after(firstDate) &&
+                    employee.getDateOfJob().before(lastDate)) {
                 temp.add(employee);
             }
         }
         return temp;
     }
 
-    public static ArrayList<Employee> searchByAgeRange(int minAge, int maxAge, DTO dto) {
+    public ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTO dto) {
         ArrayList<Employee> temp = new ArrayList<>();
-        for (Employee employee : dto.getAllEmployees()) {
-            if (employee.getAge() >= minAge && employee.getAge() <= maxAge) {
+        for (Employee employee : dto.getEmployees()) {
+            if (employee.getDateOfBirth().after(minDate) &&
+                    employee.getDateOfBirth().before(minDate)) {
                 temp.add(employee);
             }
         }
