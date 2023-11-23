@@ -13,8 +13,15 @@ interface DAO {
 
     ArrayList<Employee> searchByLastName(String name, DTO dto);
 
-    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTO dto);
-    public ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTO dto);
+    ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTO dto);
+    ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTO dto);
+
+    void setEmployees(ArrayList<Employee> employees, DTO dto);
+
+    int getNumCorrupt(DTO dto);
+
+    void setNumCorrupt(int numCorrupt, DTO dto);
+
 
     void setEmployees(ArrayList<Employee> employees, DTO dto);
 

@@ -6,6 +6,7 @@ import com.sparta.jupiterJazz.exceptions.EmployeeIdException;
 import com.sparta.jupiterJazz.exceptions.LastNameException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -25,7 +26,6 @@ public class EmployeeDAO implements DAO {
     }
 
     public EmployeeDAO(){}
-
     public Employee searchById(String id, DTO dto) throws EmployeeIdException {
         Employee result = null;
         for (Employee employee : dto.getEmployees()) {

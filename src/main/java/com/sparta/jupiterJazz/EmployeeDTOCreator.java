@@ -13,7 +13,7 @@ public class EmployeeDTOCreator {
 
 
     // Change to a return type of DTO...?
-    private static ArrayList<Employee> getEmployeeArraylist(int numEmployees)
+    public static ArrayList<Employee> getEmployeeArraylist(int numEmployees)
             throws IOException, ParseException {
         // Method call to the factory
         String[] employeeStrings = getEmployees(numEmployees);
@@ -42,9 +42,10 @@ public class EmployeeDTOCreator {
         // Might have to instantiate an instance of a DAO. Maybe also an instance of DTO.
 
     }
-
+    
     public static void main(String[] args) throws IOException, ParseException {
         ArrayList<Employee> validateEmployees = getEmployeeArraylist(950);
 
     }
+
 }

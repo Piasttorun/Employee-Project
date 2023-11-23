@@ -8,6 +8,8 @@ public class EmployeeDTO implements DTO {
     private ArrayList<Employee> employees;
     private int numCorrupt;
 
+    public EmployeeDTO() {}
+
     public ArrayList<Employee> getEmployees() {
         return employees;
     }

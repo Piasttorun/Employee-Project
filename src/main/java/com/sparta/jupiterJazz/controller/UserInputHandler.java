@@ -1,15 +1,26 @@
 package com.sparta.jupiterJazz.controller;
 
+import com.sparta.jupiterJazz.DAO;
+import com.sparta.jupiterJazz.DTO;
+import com.sparta.jupiterJazz.EmployeeDAO;
+import com.sparta.jupiterJazz.command.AbstractCommand;
+import com.sparta.jupiterJazz.command.AbstractCommandFactory;
+
 import java.util.Scanner;
+
+import static com.sparta.jupiterJazz.controller.MainController.chooseSearch;
 
 public class UserInputHandler {
 
+    private static DAO dao = new EmployeeDAO();
+    private static DTO dto;
     public static void displayStartMenu(){
         Scanner scanner = new Scanner(System.in);
 
         int menuInput;
         String employeeID;
         String hireDate;
+        String userInput;
 
         System.out.println("I store your employee data.");
         System.out.println("Please select 1 of the following options: ");
@@ -18,23 +29,38 @@ public class UserInputHandler {
         System.out.println("3. Search by the date they were hired");
 
         menuInput = scanner.nextInt();
+        AbstractCommand command = null;
 
         switch (menuInput){
             case(1):
                 System.out.println("How many employees do you want to display");
-                menuInput=scanner.nextInt();
-                displayEmployees(menuInput);
+                userInput = scanner.next();
+                command = AbstractCommandFactory.parseString(menuInput, userInput);
+                dto = chooseSearch(command);
+                dao.getEmployees(dto);
                 break;
             case(2):
                 System.out.println("Enter ID");
-                employeeID = scanner.next();
-                findByID(employeeID);
+                userInput = scanner.next();
+                command = AbstractCommandFactory.parseString(menuInput, userInput);
+                chooseSearch(command);
                 break;
             case(3):
-                System.out.println("Enter HireDate");
-                hireDate = scanner.next();
-                searchHireDate(hireDate);
+                System.out.println("Enter Hire Date Range");
+                userInput = scanner.next();
+                command = AbstractCommandFactory.parseString(menuInput, userInput);
+                chooseSearch(command);
                 break;
+            case 4:
+                System.out.println("Enter age range");
+                userInput = scanner.next();
+                command = AbstractCommandFactory.parseString(menuInput, userInput);
+                chooseSearch(command);
+            case 5:
+                System.out.println("Enter last name to search: ");
+                userInput = scanner.next();
+                command = AbstractCommandFactory.parseString(menuInput, userInput);
+                chooseSearch(command);
         }
     }
 
