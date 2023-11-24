@@ -25,9 +25,9 @@ Purpose of the probject is to via OOP methods and design principles, create a pr
   - Employee
     < enter here >
   - EmployeeDAO
-    Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
+Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
   - EmployeeDTO
-    Consists of getters and setters to fulfill the requirements of the DTO design pattern.
+Consists of getters and setters to fulfill the requirements of the DTO design pattern.
   - EmployeeDTOCreator
     < enter here >
   - EmployeeFactor
