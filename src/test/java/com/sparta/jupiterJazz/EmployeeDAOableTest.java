@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class EmployeeDAOTest {
+public class EmployeeDAOableTest {
 
-    public static DTO dto = new EmployeeDTO();
-    public static EmployeeDAO dao = new EmployeeDAO();
+    public static DTOable DTOable = new EmployeeDTOable();
+    public static EmployeeDAOable dao = new EmployeeDAOable();
     public static Employee employee;
     public static ArrayList<Employee> employeeArrayList;
 
@@ -36,22 +36,22 @@ public class EmployeeDAOTest {
         employee = new Employee("387647","Drs.","Shanika", 'D',"Tejada", 'F',"shanika.tejada@gmail.com",date1,date2,81253);
         ArrayList<Employee> employees = new ArrayList<>();
         employees.add(employee);
-        dto.setEmployees(employees);
-        dto.setNumCorrupt(4);
+        DTOable.setEmployees(employees);
+        DTOable.setNumCorrupt(4);
         employeeArrayList = new ArrayList<>(List.of(new Employee[]{employee}));
     }
 
     @Test
     @DisplayName("searchByID case where ID is in ArrayList")
     public void checkSearchByIdTrue(){
-        Assertions.assertEquals(employee,dao.searchById("387647",dto));
+        Assertions.assertEquals(employee,dao.searchById("387647", DTOable));
     }
 
     @Test
     @DisplayName("searchByID case where ID is not in ArrayList")
     public void checkSearchByIdFalse(){
         try{
-            Assertions.assertNull(dao.searchById("1", dto));
+            Assertions.assertNull(dao.searchById("1", DTOable));
         }catch(Exception e ){
             System.out.println();
         }
@@ -61,14 +61,14 @@ public class EmployeeDAOTest {
     @Test
     @DisplayName("searchByLastName case where Last Name is in ArrayList")
     public void checkSearchByLastNameTrue(){
-        Assertions.assertEquals(employeeArrayList,dao.searchByLastName("Tejada",dto));
+        Assertions.assertEquals(employeeArrayList,dao.searchByLastName("Tejada", DTOable));
     }
 
     @Test
     @DisplayName("searchByLastName case where Last Name is not in ArrayList")
     public void checkSearchByLastNameFalse() {
         try {
-            Assertions.assertEquals(new ArrayList<>(), dao.searchByLastName("AAABBB", dto));
+            Assertions.assertEquals(new ArrayList<>(), dao.searchByLastName("AAABBB", DTOable));
         }catch(Exception e){
             System.out.println();
         }
@@ -85,7 +85,7 @@ public class EmployeeDAOTest {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        Assertions.assertEquals(employeeArrayList,dao.searchByDateRange(date1,date2,dto));
+        Assertions.assertEquals(employeeArrayList,dao.searchByDateRange(date1,date2, DTOable));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class EmployeeDAOTest {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        Assertions.assertEquals(employeeArrayList,dao.searchByDateRange(date1,date2,dto));
+        Assertions.assertEquals(employeeArrayList,dao.searchByDateRange(date1,date2, DTOable));
     }
 
     @Test
@@ -114,7 +114,7 @@ public class EmployeeDAOTest {
             throw new RuntimeException(e);
         }
         try {
-            Assertions.assertEquals(new ArrayList<>(),dao.searchByDateRange(date1,date2,dto));
+            Assertions.assertEquals(new ArrayList<>(),dao.searchByDateRange(date1,date2, DTOable));
         }catch(Exception e){
             System.out.println();
         }
@@ -131,7 +131,7 @@ public class EmployeeDAOTest {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        Assertions.assertEquals(employeeArrayList,dao.searchByAgeRange(date1,date2,dto));
+        Assertions.assertEquals(employeeArrayList,dao.searchByAgeRange(date1,date2, DTOable));
     }
 
     @Test
@@ -146,7 +146,7 @@ public class EmployeeDAOTest {
             throw new RuntimeException(e);
         }
         try{
-            Assertions.assertEquals(new ArrayList<>(),dao.searchByAgeRange(date1,date2,dto));
+            Assertions.assertEquals(new ArrayList<>(),dao.searchByAgeRange(date1,date2, DTOable));
         }catch(Exception e){
             System.out.println();
         }

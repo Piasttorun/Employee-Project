@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static com.sparta.jupiterJazz.EmployeeFactory.getEmployees;
 import static com.sparta.jupiterJazz.EmployeeMapperUtility.convertStringsToArraylist;
 
-public class EmployeeDTOCreator {
+public class EmployeeArrayListConverter {
 
     private static int numOfCorruptFiles;
 

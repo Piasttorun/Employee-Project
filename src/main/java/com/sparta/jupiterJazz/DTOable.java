@@ -2,7 +2,7 @@ package com.sparta.jupiterJazz;
 
 import java.util.ArrayList;
 
-public interface DTO {
+public interface DTOable {
 
     ArrayList<Employee> getEmployees();
 

@@ -3,12 +3,12 @@ package com.sparta.jupiterJazz;
 
 import java.util.ArrayList;
 
-public class EmployeeDTO implements DTO {
+public class EmployeeDTOable implements DTOable {
 
     private ArrayList<Employee> employees;
     private int numCorrupt;
 
-    public EmployeeDTO() {}
+    public EmployeeDTOable() {}
 
     public ArrayList<Employee> getEmployees() {
         return employees;

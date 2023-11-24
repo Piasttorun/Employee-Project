@@ -1,9 +1,9 @@
 package com.sparta.jupiterJazz.controller;
 
-import com.sparta.jupiterJazz.DAO;
-import com.sparta.jupiterJazz.DTO;
+import com.sparta.jupiterJazz.DAOable;
+import com.sparta.jupiterJazz.DTOable;
 import com.sparta.jupiterJazz.Employee;
-import com.sparta.jupiterJazz.EmployeeDAO;
+import com.sparta.jupiterJazz.EmployeeDAOable;
 import com.sparta.jupiterJazz.Validator.userInputValidator;
 import com.sparta.jupiterJazz.command.AbstractCommand;
 import com.sparta.jupiterJazz.command.AbstractCommandFactory;
@@ -15,8 +15,8 @@ import static com.sparta.jupiterJazz.controller.MainController.chooseSearch;
 
 public class UserInputHandler {
 
-    private static DAO dao = new EmployeeDAO();
-    private static DTO dto;
+    private static DAOable DAOable = new EmployeeDAOable();
+    private static DTOable DTOable;
     private static Scanner scanner = new Scanner(System.in);
     public static void displayStartMenu() {
 
@@ -46,8 +46,8 @@ public class UserInputHandler {
                         userInput = scanner.next();
                     }
                     command = AbstractCommandFactory.parseString(menuInput, userInput);
-                    dto = chooseSearch(command);
-                    readDTO(dto);
+                    DTOable = chooseSearch(command);
+                    readDTO(DTOable);
                     break;
                 case (2):
                     System.out.println("Enter ID");
@@ -57,20 +57,20 @@ public class UserInputHandler {
                         userInput = scanner.next();
                     }
                     command = AbstractCommandFactory.parseString(menuInput, userInput);
-                    dto = chooseSearch(command);
-                    readDTO(dto);
+                    DTOable = chooseSearch(command);
+                    readDTO(DTOable);
                     break;
                 case (3):
                     userInput = searchByHiredDate();
                     command = AbstractCommandFactory.parseString(menuInput, userInput);
-                    dto = chooseSearch(command);
-                    readDTO(dto);
+                    DTOable = chooseSearch(command);
+                    readDTO(DTOable);
                     break;
                 case 4:
                     userInput = searchByAgeRange();
                     command = AbstractCommandFactory.parseString(menuInput, userInput);
-                    dto = chooseSearch(command);
-                    readDTO(dto);
+                    DTOable = chooseSearch(command);
+                    readDTO(DTOable);
                     break;
                 case 5:
                     System.out.println("Enter last name to search: ");
@@ -80,8 +80,8 @@ public class UserInputHandler {
                         userInput = scanner.next();
                     }
                     command = AbstractCommandFactory.parseString(menuInput, userInput);
-                    dto = chooseSearch(command);
-                    readDTO(dto);
+                    DTOable = chooseSearch(command);
+                    readDTO(DTOable);
                     break;
             }
         } catch (Exception e) {
@@ -118,9 +118,9 @@ public class UserInputHandler {
         return firstAge + " " + secondAge;
     }
 
-    private static void readDTO(DTO dto) {
-        ArrayList<Employee> employees = dao.getEmployees(dto);
-        int numCorrupt = dao.getNumCorrupt(dto);
+    private static void readDTO(DTOable DTOable) {
+        ArrayList<Employee> employees = DAOable.getEmployees(DTOable);
+        int numCorrupt = DAOable.getNumCorrupt(DTOable);
         System.out.println("Corrupt records found: " + numCorrupt);
         for (Employee employee: employees) {
             System.out.println(employee.toString());

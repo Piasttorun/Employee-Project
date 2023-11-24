@@ -14,9 +14,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import static com.sparta.jupiterJazz.EmployeeDTOCreator.getEmployeeArraylist;
-import static com.sparta.jupiterJazz.EmployeeDTOCreator.getNumOfCorruptFiles;
-import static java.util.Objects.nonNull;
+import static com.sparta.jupiterJazz.EmployeeArrayListConverter.getEmployeeArraylist;
+import static com.sparta.jupiterJazz.EmployeeArrayListConverter.getNumOfCorruptFiles;
 
 public class MainController {
 
@@ -27,13 +26,13 @@ public class MainController {
 
     private static String param1;
     private static String param2;
-    private static  DAO dao = new EmployeeDAO();
+    private static DAOable DAOable = new EmployeeDAOable();
 
     private static int numCorrupt = 0;
 
-    private static DTO currentEmployeeDTO;
+    private static DTOable currentEmployeeDTOable;
 
-    public static DTO chooseSearch(AbstractCommand command)
+    public static DTOable chooseSearch(AbstractCommand command)
             throws EmployeeIdException, AgeRangeException, DateRangeException,
             ParseException, IllegalArgumentException, IOException, NoRecordsLoadedException {
 
@@ -70,16 +69,16 @@ public class MainController {
         return null;
     }
 
-    private static DTO getDateRangeSearchDto() throws ParseException {
+    private static DTOable getDateRangeSearchDto() throws ParseException {
         Date dateRange1 = parseDate(twoPCommand.getParam1());
         Date dateRange2 = parseDate(twoPCommand.getParam2());
 
         ArrayList<Employee> employees;
-        employees = dao.searchByDateRange(dateRange1, dateRange2, currentEmployeeDTO);
+        employees = DAOable.searchByDateRange(dateRange1, dateRange2, currentEmployeeDTOable);
         return createDTO(employees, numCorrupt);
     }
 
-    private static DTO getAgeRangeSearchDto() throws ParseException {
+    private static DTOable getAgeRangeSearchDto() throws ParseException {
         int age1 = Integer.parseInt(twoPCommand.getParam1());
         int age2 = Integer.parseInt(twoPCommand.getParam2());
 
@@ -87,30 +86,30 @@ public class MainController {
         Date ageRange2 = getDateMinusInt(age2);
 
         ArrayList<Employee> employees;
-        employees = dao.searchByAgeRange(ageRange2, ageRange1, currentEmployeeDTO);
+        employees = DAOable.searchByAgeRange(ageRange2, ageRange1, currentEmployeeDTOable);
         return createDTO(employees, numCorrupt);
     }
 
-    private static DTO getLastNameSearchDto() {
+    private static DTOable getLastNameSearchDto() {
         String searchedName = onePCommand.getParam1().toLowerCase();
         ArrayList<Employee> employees;
-        employees = dao.searchByLastName(searchedName, currentEmployeeDTO);
+        employees = DAOable.searchByLastName(searchedName, currentEmployeeDTOable);
         return createDTO(employees, numCorrupt);
     }
 
-    private static DTO getIDSearchDto() {
+    private static DTOable getIDSearchDto() {
         String searchedID = onePCommand.getParam1();
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(dao.searchById(searchedID, currentEmployeeDTO));
+        employees.add(DAOable.searchById(searchedID, currentEmployeeDTOable));
         return createDTO(employees, numCorrupt);
     }
 
-    private static DTO loadNewDTO() throws IOException, ParseException {
+    private static DTOable loadNewDTO() throws IOException, ParseException {
         int numEmployees = Integer.parseInt(onePCommand.getParam1());
         ArrayList<Employee> employees = getEmployeeArraylist(numEmployees);
         numCorrupt = getNumOfCorruptFiles();
-        currentEmployeeDTO = createDTO(employees, numCorrupt);
-        return currentEmployeeDTO;
+        currentEmployeeDTOable = createDTO(employees, numCorrupt);
+        return currentEmployeeDTOable;
     }
 
     private static void extractParameters(AbstractCommand command) {
@@ -125,11 +124,11 @@ public class MainController {
         }
     }
 
-    private static DTO createDTO(ArrayList<Employee> employees, int numCorrupt) {
-        DTO dto = new EmployeeDTO();
-        dto.setEmployees(employees);
-        dto.setNumCorrupt(numCorrupt);
-        return dto;
+    private static DTOable createDTO(ArrayList<Employee> employees, int numCorrupt) {
+        DTOable DTOable = new EmployeeDTOable();
+        DTOable.setEmployees(employees);
+        DTOable.setNumCorrupt(numCorrupt);
+        return DTOable;
     }
 
     private static Date parseDate(String dateString) throws ParseException {
@@ -141,7 +140,7 @@ public class MainController {
 
 
     private static void checkRecordsLoaded() throws NoRecordsLoadedException {
-        if (currentEmployeeDTO != null) {} else {
+        if (currentEmployeeDTOable != null) {} else {
             throw new NoRecordsLoadedException("No records have been loaded");
         }
     }
