@@ -1,37 +1,8 @@
-# MySQL Employees Projects Week 3 - SOLID/OOP
+# Employee Project
 
-## General Requirements
+Purpose of the probject is to via OOP methods and design principles, create a program thart reads employees from an CSV file and outputs them if they meet certain valdiation criteria. 
 
-All projects:
-
-- Must be run as Scrum projects
-- Should be groups 
-- Must apply SOLID & OO principles
-- Must use the MVC pattern where there is a user interface
-- Should use well-known design patterns where appropriate
-- Must include comprehensive `JUnit` testing or equivalent
-- Should begin with the creation of tests, in line with a test-driven development approach
-- Must implement appropriate exception handling
-- Must be hosted on GitHub and thoroughly documented, through a README.md file
-
-## Purpose
-
-In addition to the general goals of projects, this project will give trainees an opportunity to:
-
-- Parse data into a suitable data structure
-- Use the `Collections` framework
-- Develop a collection class from scratch
-- Implement the DAO and DTO design patterns
-- Provide a user interface and searching capability
-- Using interfaces
-
-## Requirements
-
-- *Add the provided factory class, `EmployeeFactory.java`, to a suitable package within your project*
-- *Add the provided sample data file, `employees.csv`, to the `src/main/resources` folder in your project*
-- Call `EmployeeFactory.getEmployees(n)` to generate an array of random employee data of size `n` (`1 <= n <= 1000`)
-- Employee data is provided as an array of `String`s, returned from `getEmployees()`, each `String` representing
-  
+## Valdiation crtieria:
   - `Emp ID`(up to 8 digits)
   - `Prefix` 
   - `First Name` 
@@ -42,16 +13,40 @@ In addition to the general goals of projects, this project will give trainees an
   - `Date of Birth` (`YYYY-MM-DD` calendar date format)
   - `Date of Joining` (`YYYY-MM-DD` calendar date format)  
   - `Salary` 
-- The values for the employee data will be separated by commas within the `String`
-  - For example, `"387647,Drs.,Shanika,D,Tejada,F,shanika.tejada@gmail.com,8/16/1958,5/23/1995,81253"`
-- Convert each element in the array into an `Employee` object, having created a suitable DTO class, and store it in a `List` using a suitable concrete type
-- There is a risk that some of the data entries are corrupted. You will need to sanitise the data and ensure that only correct and complete records are added to the list. You should also inform the user of how many employee records are corrupted
-- You will next need to create a DAO class to interact with the collection of employees. This class will need to provide apis for the following:
+
+## You can search employees by:
   - Search for employee by `Emp ID`
   - Search for employees by `Last Name` (partial match)
   - Search for employees hired within a date range
   - Search for employees by age range
-- This class should be designed using an interface before being implemented. You are free to add more methods which you think will be useful
-- Think about exceptions you will throw to indicate that an error has occurred
-- Since you are working with a collection type, functional programming could be used 
-- Next, you will need to use JUnit to fully test your DAO class. Think about all the cases that need to be tested along with testing that exceptions have been thrown.  
+
+## Employee project classes include:
+
+  - Employee
+  - EmployeeDAO
+  - EmployeeDTO
+  - EmployeeValidator
+  - EmployeeDTOCreator
+  - EmployeeFactor
+  - EmployeeMappedUtility
+  - App (main)
+
+
+## Employee
+## EmployeeDAO
+Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
+## EmployeeDTO
+Consists of getters and setters to fulfill the requirements of the DTO design pattern.
+## EmployeeValidator
+The code has methods, including validateEmployee, that ensure various criteria for employee attributes, like proper ID format, non-empty names, valid gender, correct email format, non-null birth and joining dates, positive salary, and chronological date order, using the Employee class and Date class for date operations.
+## EmployeeDTOCreator
+Designed to create an ArrayList of validated Employee objects. It utilizes the EmployeeValidation class to ensure that the employee data is accurate and follows specified criteria.
+## EmployeeFactor
+## EmployeeMappedUtility
+## App (main)
+Below the class diagram is presented:
+Link: https://app.diagrams.net/#G1an8QKqXIvLaBYm3ER8LPloE6rAN1OMA0
+![image](https://github.com/Piasttorun/Employee-Project/assets/91672079/2c740fad-b8fe-41d1-8fb4-6e3e1a0b852f)
+
+
+  

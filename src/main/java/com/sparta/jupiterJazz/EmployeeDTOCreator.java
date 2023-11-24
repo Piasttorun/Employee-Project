@@ -11,21 +11,23 @@ import static com.sparta.jupiterJazz.EmployeeMapperUtility.convertStringsToArray
 
 public class EmployeeDTOCreator {
 
+    private static int numOfCorruptFiles;
 
-    // Change to a return type of DTO...?
     public static ArrayList<Employee> getEmployeeArraylist(int numEmployees)
             throws IOException, ParseException {
         // Method call to the factory
         String[] employeeStrings = getEmployees(numEmployees);
         ArrayList<Employee> employeeArrayList = convertStringsToArraylist(employeeStrings);
 
+        numOfCorruptFiles = 0;
         //Validates each employee before adding to the list
         ArrayList<Employee> validateEmployees = new ArrayList<>();
         for (Employee employee : employeeArrayList){
             if (EmployeeValidation.validateEmployee(employee)){
                 validateEmployees.add(employee);
             }else {
-                System.out.println("Invalid employee data: " + employee.toString());
+                // System.out.println("Invalid employee data: " + employee);
+                numOfCorruptFiles = numOfCorruptFiles + 1;
             }
         }
 
@@ -42,10 +44,9 @@ public class EmployeeDTOCreator {
         // Might have to instantiate an instance of a DAO. Maybe also an instance of DTO.
 
     }
-    
-    public static void main(String[] args) throws IOException, ParseException {
-        ArrayList<Employee> validateEmployees = getEmployeeArraylist(950);
 
+    public static int getNumOfCorruptFiles() {
+        return numOfCorruptFiles;
     }
 
 }

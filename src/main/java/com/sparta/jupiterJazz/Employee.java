@@ -1,5 +1,6 @@
 package com.sparta.jupiterJazz;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Employee {
@@ -114,5 +115,21 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        return employeeID + ' ' +
+                gender + ' ' +
+                prefix + ' ' +
+                firstName + ' ' +
+                middleInitial + ' ' +
+                lastName + ' ' +
+                gender + ' ' +
+                email + ' ' +
+                formatter.format(dateOfBirth) + ' ' +
+                formatter.format(dateOfJob) + ' ' +
+                salary;
     }
 }

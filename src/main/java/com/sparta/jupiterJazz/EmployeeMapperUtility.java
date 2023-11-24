@@ -21,10 +21,6 @@ public class EmployeeMapperUtility {
     private static Employee convertStringToEmployee(String employeeString) throws ParseException {
         String[] eFields = employeeString.split(",");
 
-        for (String fieldstring: eFields) {
-            System.out.print(fieldstring);
-        }
-
         return new Employee(eFields[0], eFields[1], eFields[2],
                 toChar(eFields[3]), eFields[4], toChar(eFields[5]), eFields[6],
                 toDate(eFields[7]), toDate(eFields[8]) , toInt(eFields[9]));
@@ -40,7 +36,8 @@ public class EmployeeMapperUtility {
     }
 
     private static Date toDate(String inputString) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
         return dateFormat.parse(inputString);
     }
 

@@ -41,7 +41,7 @@ public class EmployeeDAO implements DAO {
     public ArrayList<Employee> searchByLastName(String name, DTO dto) throws LastNameException {
         ArrayList<Employee> temp = new ArrayList<>();
         for (Employee employee : dto.getEmployees()) {
-            if (employee.getLastName().contains(name)) {
+            if (employee.getLastName().toLowerCase().contains(name)) {
                 temp.add(employee);
             }
         }
