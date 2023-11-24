@@ -24,7 +24,6 @@ public class EmployeeDAO implements DAOable {
         DTOable.setNumCorrupt(numCorrupt);
     }
 
-    public EmployeeDAO(){}
     public Employee searchById(String id, DTOable DTOable) throws EmployeeIdException {
         Employee result = null;
         for (Employee employee : DTOable.getEmployees()) {
