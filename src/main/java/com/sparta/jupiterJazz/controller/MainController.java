@@ -87,14 +87,14 @@ public class MainController {
         Date ageRange2 = getDateMinusInt(age2);
 
         ArrayList<Employee> employees;
-        employees = dao.searchByAgeRange(ageRange1, ageRange2, currentEmployeeDTO);
+        employees = dao.searchByAgeRange(ageRange2, ageRange1, currentEmployeeDTO);
         return createDTO(employees, numCorrupt);
     }
 
     private static DTO getLastNameSearchDto() {
-        String searchedName = onePCommand.getParam1();
-        ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(dao.searchById(searchedName, currentEmployeeDTO));
+        String searchedName = onePCommand.getParam1().toLowerCase();
+        ArrayList<Employee> employees;
+        employees = dao.searchByLastName(searchedName, currentEmployeeDTO);
         return createDTO(employees, numCorrupt);
     }
 
