@@ -45,6 +45,8 @@ Designed to create an ArrayList of validated Employee objects. It utilizes the E
 ## EmployeeMappedUtility
 ## App (main)
 Below the class diagram is presented:
+Link: https://app.diagrams.net/#G1an8QKqXIvLaBYm3ER8LPloE6rAN1OMA0
+![image](https://github.com/Piasttorun/Employee-Project/assets/91672079/2c740fad-b8fe-41d1-8fb4-6e3e1a0b852f)
 
 
   
