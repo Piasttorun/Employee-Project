@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class userInputValidator {
 
     public static boolean validateNOEmployees(String userCommand){
-        return Integer.parseInt(userCommand) <=10000 && Integer.parseInt(userCommand)>=1;
+        return Integer.parseInt(userCommand) <= 10000 && Integer.parseInt(userCommand)>=1;
     }
 
     public static boolean validateEmployeeID(String userCommand){
