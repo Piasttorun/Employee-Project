@@ -25,17 +25,22 @@ Purpose of the probject is to via OOP methods and design principles, create a pr
   - Employee
   - EmployeeDAO
   - EmployeeDTO
+  - EmployeeValidator
   - EmployeeDTOCreator
   - EmployeeFactor
   - EmployeeMappedUtility
   - App (main)
+
 
 ## Employee
 ## EmployeeDAO
 Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
 ## EmployeeDTO
 Consists of getters and setters to fulfill the requirements of the DTO design pattern.
+## EmployeeValidator
+The code has methods, including validateEmployee, that ensure various criteria for employee attributes, like proper ID format, non-empty names, valid gender, correct email format, non-null birth and joining dates, positive salary, and chronological date order, using the Employee class and Date class for date operations.
 ## EmployeeDTOCreator
+Designed to create an ArrayList of validated Employee objects. It utilizes the EmployeeValidation class to ensure that the employee data is accurate and follows specified criteria.
 ## EmployeeFactor
 ## EmployeeMappedUtility
 ## App (main)
