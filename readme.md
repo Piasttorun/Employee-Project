@@ -23,7 +23,7 @@ Purpose of the probject is to via OOP methods and design principles, create a pr
 ## Employee project classes include:
 
   - Employee
-  - EmployeeDAO \n
+  - EmployeeDAO
   - EmployeeDTO
   - EmployeeDTOCreator
   - EmployeeFactor
