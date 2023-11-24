@@ -4,8 +4,9 @@ import static com.sparta.jupiterJazz.controller.UserInputHandler.displayStartMen
 
 public class App 
 {
-    public static void main( String[] args )
-    {
-        displayStartMenu();
+    public static void main( String[] args ) {
+        while (true) {
+            displayStartMenu();
+        }
     }
 }

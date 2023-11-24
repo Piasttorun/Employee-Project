@@ -120,17 +120,16 @@ public class Employee {
     @Override
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
-        return "Employee{" +
-                "employeeID='" + employeeID + '\'' +
-                ", prefix='" + prefix + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", middleInitial=" + middleInitial +
-                ", gender=" + gender +
-                ", email='" + email + '\'' +
-                ", dateOfBirth=" + formatter.format(dateOfBirth) +
-                ", dateOfJob=" + formatter.format(dateOfJob) +
-                ", salary=" + salary +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return employeeID + ' ' +
+                gender + ' ' +
+                prefix + ' ' +
+                firstName + ' ' +
+                middleInitial + ' ' +
+                lastName + ' ' +
+                gender + ' ' +
+                email + ' ' +
+                formatter.format(dateOfBirth) + ' ' +
+                formatter.format(dateOfJob) + ' ' +
+                salary;
     }
 }

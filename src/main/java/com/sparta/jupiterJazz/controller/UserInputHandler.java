@@ -2,11 +2,13 @@ package com.sparta.jupiterJazz.controller;
 
 import com.sparta.jupiterJazz.DAO;
 import com.sparta.jupiterJazz.DTO;
+import com.sparta.jupiterJazz.Employee;
 import com.sparta.jupiterJazz.EmployeeDAO;
 import com.sparta.jupiterJazz.Validator.userInputValidator;
 import com.sparta.jupiterJazz.command.AbstractCommand;
 import com.sparta.jupiterJazz.command.AbstractCommandFactory;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.sparta.jupiterJazz.controller.MainController.chooseSearch;
@@ -16,7 +18,7 @@ public class UserInputHandler {
     private static DAO dao = new EmployeeDAO();
     private static DTO dto;
     private static Scanner scanner = new Scanner(System.in);
-    public static void displayStartMenu(){
+    public static void displayStartMenu() {
 
         int menuInput;
         String employeeID;
@@ -34,48 +36,60 @@ public class UserInputHandler {
         menuInput = scanner.nextInt();
         AbstractCommand command = null;
 
-        switch (menuInput){
-            case(1):
-                System.out.println("How many employees do you want to display");
-                userInput = scanner.next();
-                while (!userInputValidator.validateNumEmployees(userInput)) {
-                    System.out.println("Invalid entry, number must be between 1 and 1000, please try again");
+        try {
+            switch (menuInput) {
+                case (1):
+                    System.out.println("How many employees do you want to display");
                     userInput = scanner.next();
-                }
-                command = AbstractCommandFactory.parseString(menuInput, userInput);
-                dto = chooseSearch(command);
-                dao.getEmployees(dto);
-                break;
-            case(2):
-                System.out.println("Enter ID");
-                userInput = scanner.next();
-                while (!userInputValidator.validateEmployeeID(userInput)) {
-                    System.out.println("Invalid ID, must be a maximum of 8 digits, please try again");
+                    while (!userInputValidator.validateNumEmployees(userInput)) {
+                        System.out.println("Invalid entry, number must be between 1 and 1000, please try again");
+                        userInput = scanner.next();
+                    }
+                    command = AbstractCommandFactory.parseString(menuInput, userInput);
+                    dto = chooseSearch(command);
+                    readDTO(dto);
+                    break;
+                case (2):
+                    System.out.println("Enter ID");
                     userInput = scanner.next();
-                }
-                command = AbstractCommandFactory.parseString(menuInput, userInput);
-                chooseSearch(command);
-                break;
-            case(3):
-                userInput = searchByHiredDate();
-                command = AbstractCommandFactory.parseString(menuInput, userInput);
-                chooseSearch(command);
-                break;
-            case 4:
-                userInput = searchByAgeRange();
-                command = AbstractCommandFactory.parseString(menuInput, userInput);
-                chooseSearch(command);
-                break;
-            case 5:
-                System.out.println("Enter last name to search: ");
-                userInput = scanner.next();
-                while (!userInputValidator.validateNameInput(userInput)) {
-                    System.out.println("Invalid name input, name can only contain letters, please try again");
+                    while (!userInputValidator.validateEmployeeID(userInput)) {
+                        System.out.println("Invalid ID, must be a maximum of 8 digits, please try again");
+                        userInput = scanner.next();
+                    }
+                    command = AbstractCommandFactory.parseString(menuInput, userInput);
+                    dto = chooseSearch(command);
+                    readDTO(dto);
+                    break;
+                case (3):
+                    userInput = searchByHiredDate();
+                    command = AbstractCommandFactory.parseString(menuInput, userInput);
+                    dto = chooseSearch(command);
+                    readDTO(dto);
+                    break;
+                case 4:
+                    userInput = searchByAgeRange();
+                    command = AbstractCommandFactory.parseString(menuInput, userInput);
+                    dto = chooseSearch(command);
+                    readDTO(dto);
+                    break;
+                case 5:
+                    System.out.println("Enter last name to search: ");
                     userInput = scanner.next();
-                }
-                command = AbstractCommandFactory.parseString(menuInput, userInput);
-                chooseSearch(command);
+                    while (!userInputValidator.validateNameInput(userInput)) {
+                        System.out.println("Invalid name input, name can only contain letters, please try again");
+                        userInput = scanner.next();
+                    }
+                    command = AbstractCommandFactory.parseString(menuInput, userInput);
+                    dto = chooseSearch(command);
+                    readDTO(dto);
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        System.out.println(" ");
+        System.out.println("Type ok to continue");
+        scanner.next();
     }
 
     private static String searchByHiredDate() {
@@ -102,5 +116,15 @@ public class UserInputHandler {
             searchByAgeRange();
         }
         return firstAge + " " + secondAge;
+    }
+
+    private static void readDTO(DTO dto) {
+        ArrayList<Employee> employees = dao.getEmployees(dto);
+        int numCorrupt = dao.getNumCorrupt(dto);
+        System.out.println("Corrupt records found: " + numCorrupt);
+        for (Employee employee: employees) {
+            System.out.println(employee.toString());
+        }
+        System.out.println("");
     }
 }
