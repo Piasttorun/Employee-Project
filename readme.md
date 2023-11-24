@@ -23,19 +23,22 @@ Purpose of the probject is to via OOP methods and design principles, create a pr
 ## Employee project classes include:
 
   - Employee
-    < enter here >
   - EmployeeDAO \n
-Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
-  - EmployeeDTO \n
-Consists of getters and setters to fulfill the requirements of the DTO design pattern.
+  - EmployeeDTO
   - EmployeeDTOCreator
-    < enter here >
   - EmployeeFactor
-    < enter here >
   - EmployeeMappedUtility
-    < enter here >
   - App (main)
 
+## Employee
+## EmployeeDAO
+Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
+## EmployeeDTO
+Consists of getters and setters to fulfill the requirements of the DTO design pattern.
+## EmployeeDTOCreator
+## EmployeeFactor
+## EmployeeMappedUtility
+## App (main)
 Below the class diagram is presented:
 
 
