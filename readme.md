@@ -1,6 +1,6 @@
 # Employee Project
 
-Purpose of the probject is to via OOP methods and design principles to create a program thart reads employees from an CSV file and outputs them if they meet certain valdiation criteria. 
+Purpose of the probject is to via OOP methods and design principles, create a program thart reads employees from an CSV file and outputs them if they meet certain valdiation criteria. 
 
 ## Valdiation crtieria:
   - `Emp ID`(up to 8 digits)
