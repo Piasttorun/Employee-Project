@@ -1,8 +1,8 @@
 # Employee Project
 
-Purpose of the probject is to via OOP methods and design principles, create a program thart reads employees from an CSV file and outputs them if they meet certain valdiation criteria. 
+Purpose of the project is to via OOP methods and design principles, create a program that reads employees from an CSV file and outputs them if they meet certain validation criteria. 
 
-## Valdiation crtieria:
+## Validation criteria:
   - `Emp ID`(up to 8 digits)
   - `Prefix` 
   - `First Name` 
@@ -27,7 +27,7 @@ Purpose of the probject is to via OOP methods and design principles, create a pr
   - EmployeeDTO
   - EmployeeValidator
   - EmployeeDTOCreator
-  - EmployeeFactor
+  - EmployeeFactory
   - EmployeeMappedUtility
   - App (main)
 
@@ -41,7 +41,7 @@ Consists of getters and setters to fulfill the requirements of the DTO design pa
 The code has methods, including validateEmployee, that ensure various criteria for employee attributes, like proper ID format, non-empty names, valid gender, correct email format, non-null birth and joining dates, positive salary, and chronological date order, using the Employee class and Date class for date operations.
 ## EmployeeDTOCreator
 Designed to create an ArrayList of validated Employee objects. It utilizes the EmployeeValidation class to ensure that the employee data is accurate and follows specified criteria.
-## EmployeeFactor
+## EmployeeFactory
 ## EmployeeMappedUtility
 ## App (main)
 Below the class diagram is presented:
