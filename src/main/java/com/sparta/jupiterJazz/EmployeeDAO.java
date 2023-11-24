@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class EmployeeDAOable implements DAOable {
+public class EmployeeDAO implements DAOable {
     public ArrayList<Employee> getEmployees(DTOable DTOable) {
         return DTOable.getEmployees();
     }
@@ -24,7 +24,7 @@ public class EmployeeDAOable implements DAOable {
         DTOable.setNumCorrupt(numCorrupt);
     }
 
-    public EmployeeDAOable(){}
+    public EmployeeDAO(){}
     public Employee searchById(String id, DTOable DTOable) throws EmployeeIdException {
         Employee result = null;
         for (Employee employee : DTOable.getEmployees()) {

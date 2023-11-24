@@ -26,7 +26,7 @@ public class MainController {
 
     private static String param1;
     private static String param2;
-    private static DAOable DAOable = new EmployeeDAOable();
+    private static DAOable DAOable = new EmployeeDAO();
 
     private static int numCorrupt = 0;
 
@@ -125,7 +125,7 @@ public class MainController {
     }
 
     private static DTOable createDTO(ArrayList<Employee> employees, int numCorrupt) {
-        DTOable DTOable = new EmployeeDTOable();
+        DTOable DTOable = new EmployeeDTO();
         DTOable.setEmployees(employees);
         DTOable.setNumCorrupt(numCorrupt);
         return DTOable;

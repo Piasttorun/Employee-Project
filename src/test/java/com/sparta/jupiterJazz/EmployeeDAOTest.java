@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class EmployeeDAOableTest {
+public class EmployeeDAOTest {
 
-    public static DTOable DTOable = new EmployeeDTOable();
-    public static EmployeeDAOable dao = new EmployeeDAOable();
+    public static DTOable DTOable = new EmployeeDTO();
+    public static EmployeeDAO dao = new EmployeeDAO();
     public static Employee employee;
     public static ArrayList<Employee> employeeArrayList;
 

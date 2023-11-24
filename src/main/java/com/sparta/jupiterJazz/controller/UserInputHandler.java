@@ -3,7 +3,7 @@ package com.sparta.jupiterJazz.controller;
 import com.sparta.jupiterJazz.DAOable;
 import com.sparta.jupiterJazz.DTOable;
 import com.sparta.jupiterJazz.Employee;
-import com.sparta.jupiterJazz.EmployeeDAOable;
+import com.sparta.jupiterJazz.EmployeeDAO;
 import com.sparta.jupiterJazz.Validator.userInputValidator;
 import com.sparta.jupiterJazz.command.AbstractCommand;
 import com.sparta.jupiterJazz.command.AbstractCommandFactory;
@@ -15,7 +15,7 @@ import static com.sparta.jupiterJazz.controller.MainController.chooseSearch;
 
 public class UserInputHandler {
 
-    private static DAOable DAOable = new EmployeeDAOable();
+    private static DAOable DAOable = new EmployeeDAO();
     private static DTOable DTOable;
     private static Scanner scanner = new Scanner(System.in);
     public static void displayStartMenu() {
