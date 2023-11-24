@@ -35,6 +35,8 @@ public class UserInputHandler {
             case(1):
                 System.out.println("How many employees do you want to display");
                 userInput = scanner.next();
+                //command validates that the user input shows less than 10000
+                //employeeValidation
                 command = AbstractCommandFactory.parseString(menuInput, userInput);
                 dto = chooseSearch(command);
                 dao.getEmployees(dto);
@@ -42,12 +44,16 @@ public class UserInputHandler {
             case(2):
                 System.out.println("Enter ID");
                 userInput = scanner.next();
+                //validate that the user ID is up to 8 chars
+                //
                 command = AbstractCommandFactory.parseString(menuInput, userInput);
                 chooseSearch(command);
                 break;
             case(3):
                 System.out.println("Enter Hire Date Range");
+                System.out.println("Enter in format: YYYY-MM-DD YYYY-MM-DD");
                 userInput = scanner.next();
+                // The user will enter the
                 command = AbstractCommandFactory.parseString(menuInput, userInput);
                 chooseSearch(command);
                 break;
@@ -56,6 +62,7 @@ public class UserInputHandler {
                 userInput = scanner.next();
                 command = AbstractCommandFactory.parseString(menuInput, userInput);
                 chooseSearch(command);
+                //
             case 5:
                 System.out.println("Enter last name to search: ");
                 userInput = scanner.next();
