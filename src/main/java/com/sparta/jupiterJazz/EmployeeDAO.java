@@ -10,23 +10,25 @@ import java.util.Date;
 
 
 public class EmployeeDAO implements DAOable {
-    public ArrayList<Employee> getEmployees(DTOable DTOable) {
-        return DTOable.getEmployees();
+    public ArrayList<Employee> getEmployees(DTOable DTO) {
+        return DTO.getEmployees();
     }
 
-    public void setEmployees(ArrayList<Employee> employees, DTOable DTOable) {
-        DTOable.setEmployees(employees);
+    public void setEmployees(ArrayList<Employee> employees, DTOable DTO) {
+        DTO.setEmployees(employees);
     }
 
-    public int getNumCorrupt(DTOable DTOable) { return DTOable.getNumCorrupt(); }
-
-    public void setNumCorrupt(int numCorrupt, DTOable DTOable) {
-        DTOable.setNumCorrupt(numCorrupt);
+    public int getNumCorrupt(DTOable DTO) {
+        return DTO.getNumCorrupt();
     }
 
-    public Employee searchById(String id, DTOable DTOable) throws EmployeeIdException {
+    public void setNumCorrupt(int numCorrupt, DTOable DTO) {
+        DTO.setNumCorrupt(numCorrupt);
+    }
+
+    public Employee searchById(String id, DTOable DTO) throws EmployeeIdException {
         Employee result = null;
-        for (Employee employee : DTOable.getEmployees()) {
+        for (Employee employee : DTO.getEmployees()) {
             if (employee.getEmployeeID().equals(id)) {
                 result = employee;
             }
@@ -37,9 +39,9 @@ public class EmployeeDAO implements DAOable {
         return result;
     }
 
-    public ArrayList<Employee> searchByLastName(String name, DTOable DTOable) throws LastNameException {
+    public ArrayList<Employee> searchByLastName(String name, DTOable DTO) throws LastNameException {
         ArrayList<Employee> temp = new ArrayList<>();
-        for (Employee employee : DTOable.getEmployees()) {
+        for (Employee employee : DTO.getEmployees()) {
             if (employee.getLastName().toLowerCase().contains(name)) {
                 temp.add(employee);
             }
@@ -50,9 +52,9 @@ public class EmployeeDAO implements DAOable {
         return temp;
     }
 
-    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTOable DTOable) throws DateRangeException {
+    public ArrayList<Employee> searchByDateRange(Date firstDate, Date lastDate, DTOable DTO) throws DateRangeException {
         ArrayList<Employee> temp = new ArrayList<>();
-        for (Employee employee : DTOable.getEmployees()) {
+        for (Employee employee : DTO.getEmployees()) {
             if (employee.getDateOfJob().after(firstDate) &&
                     employee.getDateOfJob().before(lastDate)) {
                 temp.add(employee);
@@ -64,9 +66,9 @@ public class EmployeeDAO implements DAOable {
         return temp;
     }
 
-    public ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTOable DTOable) throws AgeRangeException {
+    public ArrayList<Employee> searchByAgeRange(Date minDate, Date maxDate, DTOable DTO) throws AgeRangeException {
         ArrayList<Employee> temp = new ArrayList<>();
-        for (Employee employee : DTOable.getEmployees()) {
+        for (Employee employee : DTO.getEmployees()) {
             if (employee.getDateOfBirth().after(minDate) &&
                     employee.getDateOfBirth().before(maxDate)) {
                 temp.add(employee);
