@@ -31,8 +31,19 @@ Purpose of the project is to via OOP methods and design principles, create a pro
   - EmployeeMappedUtility
   - App (main)
 
-
 ## Employee
+An object used to represent a record in our CSV file. It contains all the information needed about an employee, including:
+- employeeID (String)
+- prefix (char)
+- firstName (String)
+- middleInitial (char)
+- lastName (String)
+- gender (char)
+- email (String)
+- dateOfBirth (java.util.date)
+- dateOfHire (java.util.date)
+- salary (int)
+
 ## EmployeeDAO
 Consists of methods in order to collect data from the DTO assuming that the data fits certain validation criteria specified by the user.
 ## EmployeeDTO
@@ -42,7 +53,10 @@ The code has methods, including validateEmployee, that ensure various criteria f
 ## EmployeeDTOCreator
 Designed to create an ArrayList of validated Employee objects. It utilizes the EmployeeValidation class to ensure that the employee data is accurate and follows specified criteria.
 ## EmployeeFactory
-## EmployeeMappedUtility
+Contains the file reader used to read the employees.csv file. Retrieval method allows system to fetch up to a 1000 records at a time, and is returned as an array of Strings.
+## EmployeeMapperUtility
+Contains the methods used to parse a String, delimited by commas, into an employee object.
+
 ## App (main)
 Below the class diagram is presented:
 Link: https://app.diagrams.net/#G1an8QKqXIvLaBYm3ER8LPloE6rAN1OMA0
